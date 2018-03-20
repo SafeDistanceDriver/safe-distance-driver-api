@@ -1,0 +1,178 @@
+{
+	"info": {
+		"name": "Safe-Distance-API",
+		"_postman_id": "ffa79444-3ca1-490d-8ae7-3991cf40a4d7",
+		"description": "Returns model data from an RC car for use in safety assessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET /",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{domain}}/",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{domain}}/api",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/stats",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{domain}}/api/stats",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"stats"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/stats?newerThan={id}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{domain}}/api/stats?newerThan=3",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"stats"
+					],
+					"query": [
+						{
+							"key": "newerThan",
+							"value": "3",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/stats",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"speed\": 30,\r\n    \"distance\": 50,\r\n    \"time\": \"2018-03-14T01:03:28.034234Z\"\r\n}"
+				},
+				"url": {
+					"raw": "{{domain}}/api/stats",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"stats"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "604ae754-c5cb-4a2b-b16f-8136253f5f04",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "43c810c9-e1de-4538-b767-7d3965b9fd17",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "3220dfdd-99bd-4541-89a0-6f5584a9c57c",
+			"key": "domain",
+			"value": "http://localhost:3000",
+			"type": "text",
+			"description": ""
+		}
+	]
+}
