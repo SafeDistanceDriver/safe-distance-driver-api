@@ -1,19 +1,23 @@
-var express = require('express');
-var bodyParser = require('body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 // Constants
 const PORT = 3000;
 const QUEUE_SIZE = 30;
 
 // Setup express
-var app = express();
+const app = express();
 
 // Setup body-parser
 app.use(bodyParser.json());
 
+// Setup cors
+app.use(cors());
+
 // Setup stats queue
-var statsQueue = [];
-var nextStatId = 1;
+let statsQueue = [];
+let nextStatId = 1;
 
 function addStat(stat) {
     stat.id = nextStatId;
@@ -27,7 +31,7 @@ function addStat(stat) {
 // Routes
 // GET /
 app.get('/', function (request, response) {
-    var body = {
+    const body = {
         message: 'Please use /api'
     };
     response.status(200);
@@ -36,7 +40,7 @@ app.get('/', function (request, response) {
 
 // GET /api
 app.get('/api', function (request, response) {
-    var body = {
+    const body = {
         links: [
             {
                 link: "/api",
@@ -63,8 +67,8 @@ function containsNewerThan(query) {
 
 // GET /api/stats
 app.get('/api/stats', function (request, response) {
-    var body = [].concat(statsQueue);
-    var query = request.query;
+    let body = [].concat(statsQueue);
+    const query = request.query;
     if (containsNewerThan(query)) {
         var id = query.newerThan;
         body = body.filter(
@@ -78,7 +82,7 @@ app.get('/api/stats', function (request, response) {
 
 // POST /api/stats
 app.post('/api/stats', function (request, response) {
-    var stat = request.body;
+    const stat = request.body;
     // TODO: Validation
     addStat(stat);
     response.status(201);
